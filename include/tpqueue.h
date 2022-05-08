@@ -6,18 +6,18 @@ template<typename T, int size>
 class TPQueue {
  private:
     T a[100];
-    int f, l;
+    int firstt, smt;
  public:
-    TPQueue() : f(0), l(0) {}
+    TPQueue() : firstt(0), smt(0) {}
     void push(T value) {
-        int i = l++;
-        while ((--i >= f) && (a[i % size].prior < value.prior)) {
+        int i = smt++;
+        while ((--i >= firstt) && (a[i % size].prior < value.prior)) {
             a[(i + 1) % size] = a[i % size];
         }
         a[(i + 1) % size] = value;
     }
     T pop() {
-        return a[(f++) % size];
+        return a[(firstt++) % size];
     }
 };
 
